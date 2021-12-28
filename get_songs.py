@@ -15,10 +15,9 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 def get_categories(limit: int, country: str) -> dict[str, str]:
     """
     Returns a dict mapping category names to their ids
-    The parameter, limit, is the amount of categories wanted
 
-    Preconditions:
-    - 1 <= limit <= 50
+    limit is the amount of categories wanted - must be between 1 and 50, inclusive
+    country is the country code of the country that the category must be available in
     """
     results = sp.categories(country=country, locale=None, limit=limit, offset=0)
     results_categories = results['categories']['items']
@@ -30,6 +29,13 @@ def get_categories(limit: int, country: str) -> dict[str, str]:
 
 
 def get_category_playlists(category: str, country: str, limit: int) -> dict[str, str]:
+    """
+    Returns a dict mapping of playlist names to their spotify ids
+
+    category is the category id of the category of playlists wanted
+    limit is the amount of playlists wanted - must be between 1 and 50, inclusive
+    country is the country code of the country that the playlist must be available in
+    """
     categories = get_categories(limit=50, country=country)
     category_id = categories[category]
     playlists = sp.category_playlists(category_id=category_id, country=country, limit=limit, offset=0)
@@ -42,6 +48,14 @@ def get_category_playlists(category: str, country: str, limit: int) -> dict[str,
 
 
 def get_playlist_tracks(category: str, playlist_name: str, country: str, limit: int) -> list[list]:
+    """
+    Returns a list of playlist tracks with name of track, artist names, and track id
+
+    category is the category id of the category of playlist tracks wanted
+    playlist_name is the name of the playlist to get tracks from
+    limit is the amount of tracks wanted - must be between 1 and 50, inclusive
+    country is the country code of the country that the playlist must be available in
+    """
     playlists = get_category_playlists(category=category, country=country, limit=50)
     playlist_id = playlists[playlist_name]
     tracks = sp.playlist_items(playlist_id=playlist_id, fields=None, limit=limit, offset=0, market=None)
