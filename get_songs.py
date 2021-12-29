@@ -38,6 +38,12 @@ def get_category_playlists(category: str, country: str, limit: int) -> dict[str,
     """
     categories = get_categories(limit=50, country=country)
     category_id = categories[category]
+    playlists_names_ids = get_playlists_by_id(category_id=category_id, country=country, limit=limit)
+
+    return playlists_names_ids
+
+
+def get_playlists_by_id(category_id: str, country: str, limit: int) -> dict[str, str]:
     playlists = sp.category_playlists(category_id=category_id, country=country, limit=limit, offset=0)
     playlists_names_ids = {}
     for i in range(len(playlists['playlists']['items'])):
@@ -58,6 +64,12 @@ def get_playlist_tracks(category: str, playlist_name: str, country: str, limit: 
     """
     playlists = get_category_playlists(category=category, country=country, limit=50)
     playlist_id = playlists[playlist_name]
+    track_list = get_playlist_tracks_by_id(playlist_id=playlist_id, country=country, limit=limit)
+
+    return track_list
+
+
+def get_playlist_tracks_by_id(playlist_id: str, country: str, limit: int) -> list[list]:
     tracks = sp.playlist_items(playlist_id=playlist_id, fields=None, limit=limit, offset=0, market=None)
 
     # iterate over each track to get track name, artists, and track id
