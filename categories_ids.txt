@@ -1,0 +1,26 @@
+Happy Holidays: holidays
+Hip-Hop: hiphop
+Pop: pop
+Rock: rock
+Country: country
+Mood: mood
+Workout: workout
+R&B: rnb
+Dance/Electronic: edm_dance
+Chill: chill
+Indie: indie_alt
+Latin: latin
+Party: party
+Focus: focus
+Alternative: alternative
+Sleep: sleep
+Instrumental: instrumental
+Folk & Acoustic: roots
+Romance: romance
+Classical: classical
+Jazz: jazz
+Christian & Gospel: inspirational
+Metal: metal
+Punk: punk
+Funk: funk
+Blues: blues
