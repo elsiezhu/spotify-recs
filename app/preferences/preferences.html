@@ -3,18 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="spotify song recommender">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="index.css">
 		<title>spotify-recs</title>
     </head>
     <body>
         <header>
             <h1>spotify recs</h1>
+            <h2>preferences</h2>
         </header>
         <main>
-            <p>recommends a list of songs using preferences in genre, valence, energy, danceability, and acousticness.</p>
-            <button id="start-btn" onclick="document.location='preferences/preferences.html'">start</button>
-            <script src="index.js"></script>
+            <p>please enter your musical preferences</p>
+            <input id="valence" type="range"/>
+            <input id="energy" type="range"/>
+            <input id="danceability" type="range"/>
+            <input id="acousticness" type="range"/>
         </main>
         <footer>
             
