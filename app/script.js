@@ -39,3 +39,6 @@ function getPlaylistTracks(playlistId) {
     return tracks;
 }
 
+function getRandomSong(playlistId) {
+    let tracks = spotifyApi.getPlaylistTracks(playlistId);
+}
